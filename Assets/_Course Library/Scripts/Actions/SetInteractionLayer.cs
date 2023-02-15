@@ -16,21 +16,25 @@ public class SetInteractionLayer : MonoBehaviour
 
     private void Awake()
     {
-        interactor = GetComponent<XRBaseInteractor>();;
+        interactor = GetComponent<XRBaseInteractor>();
         originalLayer = interactor.interactionLayers;
     }
 
     public void ToggleTargetLayer()
     {
-        if (interactor.interactionLayers!= originalLayer)
+        if(interactor != null)
         {
-           
-            interactor.interactionLayers = originalLayer;
+            if (interactor.interactionLayers != originalLayer)
+            {
+
+                interactor.interactionLayers = originalLayer;
+            }
+            else
+            {
+                interactor.interactionLayers = targetLayer;
+            }
         }
-        else
-        {
-            interactor.interactionLayers = targetLayer;
-        }
+
     }
 
 }
